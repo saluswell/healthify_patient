@@ -26,4 +26,6 @@ class FirebaseUtils {
   static String recipes = "recipes";
 
   static String workouts = "workouts";
+
+  static String mealPlans="mealPlans";
 }
