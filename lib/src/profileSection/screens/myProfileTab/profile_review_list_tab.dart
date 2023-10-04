@@ -7,17 +7,18 @@ import '../../../reviewsSection/models/review_model.dart';
 import '../../../reviewsSection/services/review_services.dart';
 import '../../widgets/reviewTileWidget.dart';
 
-class ReviewListTabScreen extends StatefulWidget {
-  final String careProviderId;
-
-  const ReviewListTabScreen({Key? key, required this.careProviderId})
-      : super(key: key);
+class ProfileReviewListTabScreen extends StatefulWidget {
+  const ProfileReviewListTabScreen({
+    Key? key,
+  }) : super(key: key);
 
   @override
-  State<ReviewListTabScreen> createState() => _ReviewListTabScreenState();
+  State<ProfileReviewListTabScreen> createState() =>
+      _ProfileReviewListTabScreenState();
 }
 
-class _ReviewListTabScreenState extends State<ReviewListTabScreen> {
+class _ProfileReviewListTabScreenState
+    extends State<ProfileReviewListTabScreen> {
   ReviewServices reviewServices = ReviewServices();
 
   @override
@@ -29,8 +30,7 @@ class _ReviewListTabScreenState extends State<ReviewListTabScreen> {
             height: 15,
           ),
           StreamProvider.value(
-              value: reviewServices.streamSpecificDoctorReviewsList(
-                  widget.careProviderId.toString()),
+              value: reviewServices.streamReviewsList(),
               initialData: [ReviewModel()],
               builder: (context, child) {
                 List<ReviewModel> reviewList =

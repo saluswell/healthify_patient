@@ -17,16 +17,61 @@ class HomeServices {
   }
 
   Stream<List<UserModelDietitian>>? streamCategoryWise(
-      {required String userType}) {
+      {required String userType,
+      required String selectedCountry,
+      required String selectedState}) {
     if (userType == TextUtils.Dietitian) {
-      return FirebaseFirestore.instance
-          .collection(FirebaseUtils.users)
-          .where("UserType", isEqualTo: TextUtils.Dietitian)
-          //.where("PersonalInformationModel.title", isEqualTo: "Dietitian")
-          .snapshots()
-          .map((list) => list.docs
-              .map((singleDoc) => UserModelDietitian.fromJson(singleDoc.data()))
-              .toList());
+      if (selectedCountry != "null" && selectedState != "null") {
+        return FirebaseFirestore.instance
+            .collection(FirebaseUtils.users)
+            .where("UserType", isEqualTo: TextUtils.Dietitian)
+            .where("PersonalInformationModel.country",
+                isEqualTo: selectedCountry)
+            .where("PersonalInformationModel.province",
+                isEqualTo: selectedState)
+            //.where("PersonalInformationModel.title", isEqualTo: "Dietitian")
+            .snapshots()
+            .map((list) => list.docs
+                .map((singleDoc) =>
+                    UserModelDietitian.fromJson(singleDoc.data()))
+                .toList());
+      } else if (selectedCountry != "null") {
+        return FirebaseFirestore.instance
+            .collection(FirebaseUtils.users)
+            .where("UserType", isEqualTo: TextUtils.Dietitian)
+            .where("PersonalInformationModel.country",
+                isEqualTo: selectedCountry)
+
+            //.where("PersonalInformationModel.title", isEqualTo: "Dietitian")
+            .snapshots()
+            .map((list) => list.docs
+                .map((singleDoc) =>
+                    UserModelDietitian.fromJson(singleDoc.data()))
+                .toList());
+      } else if (selectedState != "null") {
+        return FirebaseFirestore.instance
+            .collection(FirebaseUtils.users)
+            .where("UserType", isEqualTo: TextUtils.Dietitian)
+            .where("PersonalInformationModel.province",
+                isEqualTo: selectedState)
+
+            //.where("PersonalInformationModel.title", isEqualTo: "Dietitian")
+            .snapshots()
+            .map((list) => list.docs
+                .map((singleDoc) =>
+                    UserModelDietitian.fromJson(singleDoc.data()))
+                .toList());
+      } else {
+        return FirebaseFirestore.instance
+            .collection(FirebaseUtils.users)
+            .where("UserType", isEqualTo: TextUtils.Dietitian)
+            //.where("PersonalInformationModel.title", isEqualTo: "Dietitian")
+            .snapshots()
+            .map((list) => list.docs
+                .map((singleDoc) =>
+                    UserModelDietitian.fromJson(singleDoc.data()))
+                .toList());
+      }
     } else if (userType == TextUtils.Physician) {
       return FirebaseFirestore.instance
           .collection(FirebaseUtils.users)
@@ -45,10 +90,10 @@ class HomeServices {
           .map((list) => list.docs
               .map((singleDoc) => UserModelDietitian.fromJson(singleDoc.data()))
               .toList());
-    } else if (userType == TextUtils.NursePractitioner) {
+    } else if (userType == TextUtils.BehaviorCoache) {
       return FirebaseFirestore.instance
           .collection(FirebaseUtils.users)
-          .where("UserType", isEqualTo: TextUtils.NursePractitioner)
+          .where("UserType", isEqualTo: TextUtils.BehaviorCoache)
           //.where("PersonalInformationModel.title", isEqualTo: "Dietitian")
           .snapshots()
           .map((list) => list.docs

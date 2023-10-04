@@ -28,6 +28,7 @@ class TextUtils {
   static String Dietitian = "Dietitian";
   static String fitnessTrainer = "Fitness Trainer";
   static String NursePractitioner = "Nurse Practitioner";
+  static String BehaviorCoache = "Behavior Coache";
   static String Physician = "Physician";
 
   static var documentIDBox = "documentIDBox";

@@ -25,6 +25,7 @@ class UserModelDietitian {
       this.isApprovedByAdmin,
       this.userType,
       this.dateCreated,
+      this.isVerified,
       this.personalInformationModel,
       this.professionalInformationModel,
       this.bankingInformationModel});
@@ -36,6 +37,7 @@ class UserModelDietitian {
   bool? isApprovedByAdmin;
   String? userType;
   Timestamp? dateCreated;
+  bool? isVerified;
   PersonalInformationModel? personalInformationModel;
   BankingInformationModel? bankingInformationModel;
   ProfessionalInformationModel? professionalInformationModel;
@@ -49,6 +51,7 @@ class UserModelDietitian {
         isApprovedByAdmin: json["isApprovedByAdmin"],
         userType: json["UserType"],
         dateCreated: json["dateCreated"],
+        isVerified: json["isVerified"],
         personalInformationModel:
             PersonalInformationModel.fromJson(json["PersonalInformationModel"]),
         bankingInformationModel:
@@ -65,6 +68,7 @@ class UserModelDietitian {
         "isApprovedByAdmin": isApprovedByAdmin,
         "UserType": userType,
         "dateCreated": dateCreated,
+        "isVerified": isVerified,
         "PersonalInformationModel": personalInformationModel!.toJson(docID),
         "BankingInformationModel": bankingInformationModel!.toJson(docID),
         "ProfessionalInformationModel":

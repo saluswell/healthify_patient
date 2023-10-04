@@ -17,27 +17,27 @@ String userModelToJson(UserModel data) =>
     json.encode(data.toJson(data.userId.toString()));
 
 class UserModel {
-  UserModel({
-    this.userId,
-    this.userName,
-    this.emailAdress,
-    this.profilePicture,
-    this.isApprovedByAdmin,
-    this.userType,
-    this.dateCreated,
-    this.availableDays,
-    this.availabletimeSlots,
-    this.patientQuestionareModel,
-    this.personalInformationModel,
-    this.professionalInformationModel,
-    this.bankingInformationModel,
-    this.planName,
-    this.planPrice,
-    this.planStatus,
-    this.subscriptionID,
-    this.customerID,
-    this.currency,
-  });
+  UserModel(
+      {this.userId,
+      this.userName,
+      this.emailAdress,
+      this.profilePicture,
+      this.isApprovedByAdmin,
+      this.userType,
+      this.dateCreated,
+      this.availableDays,
+      this.availabletimeSlots,
+      this.patientQuestionareModel,
+      this.personalInformationModel,
+      this.professionalInformationModel,
+      this.bankingInformationModel,
+      this.planName,
+      this.planPrice,
+      this.planStatus,
+      this.subscriptionID,
+      this.customerID,
+      this.currency,
+      this.isVerified});
 
   String? userId;
   String? userName;
@@ -58,6 +58,7 @@ class UserModel {
   String? subscriptionID;
   String? customerID;
   String? currency;
+  bool? isVerified;
 
   factory UserModel.fromJson(Map<String, dynamic> json) => UserModel(
         userId: json["userID"],
@@ -83,6 +84,7 @@ class UserModel {
         subscriptionID: json["subscriptionID"],
         customerID: json["customerID"],
         currency: json["currency"],
+        isVerified: json["isVerified"],
       );
 
   Map<String, dynamic> toJson(String docID) => {
@@ -106,5 +108,6 @@ class UserModel {
         "subscriptionID": subscriptionID,
         "customerID": customerID,
         "currency": currency,
+        "isVerified": isVerified,
       };
 }

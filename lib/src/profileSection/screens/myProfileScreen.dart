@@ -7,6 +7,7 @@ import '../../../common/widgets/cacheNetworkImageWidget.dart';
 import '../../../res.dart';
 import '../../authenticationsection/Models/userModel.dart';
 import 'myProfileTab/personal_about_tab.dart';
+import 'myProfileTab/profile_review_list_tab.dart';
 import 'myProfileTab/reviewsTab.dart';
 
 class MyProfileScreen extends StatefulWidget {
@@ -213,7 +214,7 @@ class _MyProfileScreenState extends State<MyProfileScreen> {
                 ]),
             Expanded(
               child: TabBarView(children: [
-                ReviewListTabScreen(),
+                ProfileReviewListTabScreen(),
                 PersonalAboutTab(userModel: widget.userModel)
               ]),
             )

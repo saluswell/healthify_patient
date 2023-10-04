@@ -176,6 +176,7 @@ class AuthProvider extends ChangeNotifier {
             planName: PlanName.FreePlan.name,
             planPrice: null,
             planStatus: PlanStatus.InActive.name,
+            isVerified: true,
             personalInformationModel: PersonalInformationModel(
                 title: titleController.text,
                 firstName: firstNameController.text,

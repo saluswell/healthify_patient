@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:healthifi_patient/src/dashboardSection/providers/search_provider.dart';
+import 'package:provider/provider.dart';
 
 import '../../../common/utils/appcolors.dart';
 import '../../../common/utils/themes.dart';
@@ -70,7 +72,7 @@ class DietitiansCardWidget extends StatelessWidget {
                                   fontWeight: FontWeight.w500),
                             ),
                             const SizedBox(
-                              height: 6,
+                              height: 4,
                             ),
                             Text(
                               userModel
@@ -85,15 +87,45 @@ class DietitiansCardWidget extends StatelessWidget {
                         ),
                       ],
                     ),
-                    Column(
-                      children: [
-                        IconButton(
-                            onPressed: () {},
-                            icon: Icon(
-                              Icons.favorite,
-                              color: AppColors.appcolor,
-                            )),
-                      ],
+                    Padding(
+                      padding: const EdgeInsets.only(right: 10),
+                      child: userModel.isVerified == true
+                          ? Column(
+                              children: [
+                                Icon(
+                                  Icons.verified_rounded,
+                                  color: AppColors.appcolor,
+                                ),
+                                SizedBox(
+                                  height: 2,
+                                ),
+                                Text(
+                                  "Verified",
+                                  style: fontW5S12(context)!.copyWith(
+                                      fontSize: 12,
+                                      color: AppColors.lightdarktextcolor,
+                                      fontWeight: FontWeight.w500),
+                                ),
+                              ],
+                            )
+                          : Column(
+                              children: [
+                                Icon(
+                                  Icons.verified_rounded,
+                                  color: AppColors.redcolor,
+                                ),
+                                SizedBox(
+                                  height: 2,
+                                ),
+                                Text(
+                                  "Not Verified",
+                                  style: fontW5S12(context)!.copyWith(
+                                      fontSize: 12,
+                                      color: AppColors.lightdarktextcolor,
+                                      fontWeight: FontWeight.w500),
+                                ),
+                              ],
+                            ),
                     )
                   ],
                 ),
@@ -105,7 +137,7 @@ class DietitiansCardWidget extends StatelessWidget {
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
+                      crossAxisAlignment: CrossAxisAlignment.center,
                       children: [
                         Text(
                           "Experience",
@@ -120,8 +152,9 @@ class DietitiansCardWidget extends StatelessWidget {
                         Text(
                           userModel.professionalInformationModel!
                                   .yearofExperience
-                                  .toString() +
-                              " Years",
+                                  .toString()
+                                  .toUpperCase() +
+                              " YEARS",
                           style: fontW5S12(context)!.copyWith(
                               fontSize: 11,
                               color: AppColors.lightdarktextcolor,
@@ -135,10 +168,10 @@ class DietitiansCardWidget extends StatelessWidget {
                       color: AppColors.lightdarktextcolor,
                     ),
                     Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
+                      crossAxisAlignment: CrossAxisAlignment.center,
                       children: [
                         Text(
-                          "Reviews",
+                          "Country",
                           style: fontW5S12(context)!.copyWith(
                               fontSize: 11,
                               color: AppColors.blackcolor,
@@ -150,17 +183,35 @@ class DietitiansCardWidget extends StatelessWidget {
                         Row(
                           children: [
                             const Icon(
-                              Icons.star,
+                              Icons.location_on_sharp,
                               size: 13,
-                              color: Colors.amber,
+                              color: AppColors.darkAppColor,
+                            ),
+                            const SizedBox(
+                              width: 2,
                             ),
                             Text(
-                              " 5(42)",
+                              userModel.personalInformationModel!.country
+                                  .toString()
+                                  .toUpperCase(),
+                              //" 5(42)",
                               style: fontW5S12(context)!.copyWith(
                                   fontSize: 11,
                                   color: AppColors.lightdarktextcolor,
                                   fontWeight: FontWeight.w500),
                             ),
+                            // Consumer<SearchProvider>(
+                            //     builder: (context, searchProvider, __) {
+                            //   return Text(
+                            //     searchProvider.calculateAverageRating(
+                            //         userModel.userId.toString()).toString(),
+                            //     //" 5(42)",
+                            //     style: fontW5S12(context)!.copyWith(
+                            //         fontSize: 11,
+                            //         color: AppColors.lightdarktextcolor,
+                            //         fontWeight: FontWeight.w500),
+                            //   );
+                            // }),
                           ],
                         ),
                       ],
@@ -171,10 +222,10 @@ class DietitiansCardWidget extends StatelessWidget {
                       color: AppColors.lightdarktextcolor,
                     ),
                     Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
+                      crossAxisAlignment: CrossAxisAlignment.center,
                       children: [
                         Text(
-                          "Response",
+                          "State/Province",
                           style: fontW5S12(context)!.copyWith(
                               fontSize: 11,
                               color: AppColors.blackcolor,
@@ -183,12 +234,19 @@ class DietitiansCardWidget extends StatelessWidget {
                         const SizedBox(
                           height: 6,
                         ),
-                        Text(
-                          "1 hour",
-                          style: fontW5S12(context)!.copyWith(
-                              fontSize: 11,
-                              color: AppColors.lightdarktextcolor,
-                              fontWeight: FontWeight.w500),
+                        Row(
+                          children: [
+                            Text(
+                              userModel.personalInformationModel!.province
+                                  .toString()
+                                  .toUpperCase(),
+                              //" 5(42)",
+                              style: fontW5S12(context)!.copyWith(
+                                  fontSize: 11,
+                                  color: AppColors.lightdarktextcolor,
+                                  fontWeight: FontWeight.w500),
+                            ),
+                          ],
                         ),
                       ],
                     ),

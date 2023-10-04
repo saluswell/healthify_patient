@@ -1,5 +1,7 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:healthifi_patient/src/dashboardSection/providers/search_provider.dart';
+import 'package:provider/provider.dart';
 
 import '../../../common/helperFunctions/navigatorHelper.dart';
 import '../../../common/utils/appcolors.dart';
@@ -11,10 +13,23 @@ import '../../chatSection/screens/messages.dart';
 import '../../profileSection/screens/myProfileTab/aboutTab.dart';
 import '../../profileSection/screens/myProfileTab/reviewsTab.dart';
 
-class DoctorDetails extends StatelessWidget {
+class DoctorDetails extends StatefulWidget {
   final UserModelDietitian userModel;
 
   DoctorDetails({Key? key, required this.userModel}) : super(key: key);
+
+  @override
+  State<DoctorDetails> createState() => _DoctorDetailsState();
+}
+
+class _DoctorDetailsState extends State<DoctorDetails> {
+  @override
+  void initState() {
+    context
+        .read<SearchProvider>()
+        .calculateAverageRating(widget.userModel.userId.toString());
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -31,7 +46,7 @@ class DoctorDetails extends StatelessWidget {
                   toNext(
                       context: context,
                       widget: CreateAppointmentScreen(
-                        userDietitanModeluser: userModel,
+                        userDietitanModeluser: widget.userModel,
                       ));
                 },
                 child: Container(
@@ -79,10 +94,10 @@ class DoctorDetails extends StatelessWidget {
                   toNext(
                       context: context,
                       widget: MessagesView(
-                          image: userModel!.profilePicture.toString(),
-                          receiverID: userModel.userId.toString(),
+                          image: widget.userModel!.profilePicture.toString(),
+                          receiverID: widget.userModel.userId.toString(),
                           myID: FirebaseAuth.instance.currentUser!.uid,
-                          name: userModel.userName.toString()));
+                          name: widget.userModel.userName.toString()));
                   // Navigator.maybePop(context);
                 },
                 icon: const Icon(
@@ -95,7 +110,7 @@ class DoctorDetails extends StatelessWidget {
           toolbarHeight: 50,
           centerTitle: true,
           title: Text(
-            "Dr ${userModel!.userName}",
+            "Dr ${widget.userModel!.userName}",
             style: fontW5S12(context)!.copyWith(
                 fontSize: 17,
                 color: AppColors.blackcolor,
@@ -122,7 +137,7 @@ class DoctorDetails extends StatelessWidget {
                         child: CacheNetworkImageWidget(
                             height: 75,
                             width: 75,
-                            imgUrl: userModel!.profilePicture.toString(),
+                            imgUrl: widget.userModel!.profilePicture.toString(),
                             radius: 7),
                       ),
                       const SizedBox(
@@ -132,7 +147,7 @@ class DoctorDetails extends StatelessWidget {
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           Text(
-                            "${userModel!.userName}",
+                            "${widget.userModel!.userName}",
                             style: fontW5S12(context)!.copyWith(
                                 fontSize: 15,
                                 color: AppColors.blackcolor,
@@ -142,7 +157,7 @@ class DoctorDetails extends StatelessWidget {
                             height: 2,
                           ),
                           Text(
-                            userModel!.userType.toString(),
+                            widget.userModel!.userType.toString(),
                             style: fontW5S12(context)!.copyWith(
                                 fontSize: 12,
                                 color: AppColors.lightdarktextcolor,
@@ -152,8 +167,8 @@ class DoctorDetails extends StatelessWidget {
                             height: 6,
                           ),
                           Text(
-                            userModel!
-                                .professionalInformationModel!.qualfications
+                            widget.userModel!.professionalInformationModel!
+                                .qualfications
                                 .toString(),
                             style: fontW5S12(context)!.copyWith(
                                 fontSize: 12,
@@ -215,7 +230,7 @@ class DoctorDetails extends StatelessWidget {
                         height: 6,
                       ),
                       Text(
-                        "${userModel!.professionalInformationModel!.yearofExperience} Years",
+                        "${widget.userModel!.professionalInformationModel!.yearofExperience} Years",
                         style: fontW5S12(context)!.copyWith(
                             fontSize: 12,
                             color: AppColors.lightdarktextcolor,
@@ -228,37 +243,47 @@ class DoctorDetails extends StatelessWidget {
                     width: 1,
                     color: AppColors.lightdarktextcolor,
                   ),
-                  Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Text(
-                        "Reviews",
-                        style: fontW5S12(context)!.copyWith(
-                            fontSize: 13,
-                            color: AppColors.blackcolor,
-                            fontWeight: FontWeight.w700),
-                      ),
-                      const SizedBox(
-                        height: 6,
-                      ),
-                      Row(
-                        children: [
-                          const Icon(
-                            Icons.star,
-                            size: 13,
-                            color: Colors.amber,
-                          ),
-                          Text(
-                            " 5(42)",
-                            style: fontW5S12(context)!.copyWith(
-                                fontSize: 12,
-                                color: AppColors.lightdarktextcolor,
-                                fontWeight: FontWeight.w500),
-                          ),
-                        ],
-                      ),
-                    ],
-                  ),
+                  Consumer<SearchProvider>(
+                      builder: (context, searchProvider, __) {
+                    return Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Text(
+                          "Reviews",
+                          style: fontW5S12(context)!.copyWith(
+                              fontSize: 13,
+                              color: AppColors.blackcolor,
+                              fontWeight: FontWeight.w700),
+                        ),
+                        const SizedBox(
+                          height: 6,
+                        ),
+                        Row(
+                          children: [
+                            const Icon(
+                              Icons.star,
+                              size: 13,
+                              color: Colors.amber,
+                            ),
+                            Text(
+                              searchProvider.averageRatingVar == null ||
+                                      searchProvider.reviewslength == null
+                                  ? "0.0"
+                                  : searchProvider.averageRatingVar.toString() +
+                                      " (" +
+                                      searchProvider.reviewslength.toString() +
+                                      ")",
+                              // " 5(42)",
+                              style: fontW5S12(context)!.copyWith(
+                                  fontSize: 12,
+                                  color: AppColors.lightdarktextcolor,
+                                  fontWeight: FontWeight.w500),
+                            ),
+                          ],
+                        ),
+                      ],
+                    );
+                  }),
                   Container(
                     height: 30,
                     width: 1,
@@ -268,7 +293,7 @@ class DoctorDetails extends StatelessWidget {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Text(
-                        "Response",
+                        "State/Province",
                         style: fontW5S12(context)!.copyWith(
                             fontSize: 13,
                             color: AppColors.blackcolor,
@@ -278,7 +303,9 @@ class DoctorDetails extends StatelessWidget {
                         height: 6,
                       ),
                       Text(
-                        "1 hour",
+                        widget.userModel.personalInformationModel!.province
+                            .toString()
+                            .toUpperCase(),
                         style: fontW5S12(context)!.copyWith(
                             fontSize: 12,
                             color: AppColors.lightdarktextcolor,
@@ -313,9 +340,11 @@ class DoctorDetails extends StatelessWidget {
                 ]),
             Expanded(
               child: TabBarView(children: [
-                ReviewListTabScreen(),
+                ReviewListTabScreen(
+                  careProviderId: widget.userModel.userId.toString(),
+                ),
                 AboutUserProfileTabScreen(
-                  userModel: userModel,
+                  userModel: widget.userModel,
                 )
               ]),
             )

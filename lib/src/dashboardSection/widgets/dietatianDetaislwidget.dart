@@ -99,22 +99,59 @@ class PopularDietitiansWidget extends StatelessWidget {
                           ),
                         ],
                       ),
-                      Column(
-                        children: [
-                          IconButton(
-                              onPressed: () {},
-                              icon: Icon(
-                                Icons.favorite,
-                                color: AppColors.appcolor,
-                              )),
-                        ],
-                      )
+                      userModel.isVerified == true
+                          ? Column(
+                              children: [
+                                Icon(
+                                  Icons.verified_rounded,
+                                  color: AppColors.appcolor,
+                                ),
+                                SizedBox(
+                                  height: 2,
+                                ),
+                                Text(
+                                  "Verified",
+                                  style: fontW5S12(context)!.copyWith(
+                                      fontSize: 12,
+                                      color: AppColors.lightdarktextcolor,
+                                      fontWeight: FontWeight.w500),
+                                ),
+                              ],
+                            )
+                          : Column(
+                              children: [
+                                Icon(
+                                  Icons.verified_rounded,
+                                  color: AppColors.redcolor,
+                                ),
+                                SizedBox(
+                                  height: 2,
+                                ),
+                                Text(
+                                  "Not Verified",
+                                  style: fontW5S12(context)!.copyWith(
+                                      fontSize: 12,
+                                      color: AppColors.lightdarktextcolor,
+                                      fontWeight: FontWeight.w500),
+                                ),
+                              ],
+                            )
+                      // Column(
+                      //   children: [
+                      //     IconButton(
+                      //         onPressed: () {},
+                      //         icon: Icon(
+                      //           Icons.favorite,
+                      //           color: AppColors.appcolor,
+                      //         )),
+                      //   ],
+                      // )
                     ],
                   ),
                 ),
                 const Spacer(),
                 Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 12),
+                  padding: const EdgeInsets.symmetric(horizontal: 20),
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
@@ -148,11 +185,47 @@ class PopularDietitiansWidget extends StatelessWidget {
                         width: 1,
                         color: AppColors.lightdarktextcolor,
                       ),
+                      // Column(
+                      //   crossAxisAlignment: CrossAxisAlignment.start,
+                      //   children: [
+                      //     Text(
+                      //       "Reviews",
+                      //       style: fontW5S12(context)!.copyWith(
+                      //           fontSize: 11,
+                      //           color: AppColors.blackcolor,
+                      //           fontWeight: FontWeight.w700),
+                      //     ),
+                      //     const SizedBox(
+                      //       height: 6,
+                      //     ),
+                      //     Row(
+                      //       children: [
+                      //         const Icon(
+                      //           Icons.star,
+                      //           size: 13,
+                      //           color: Colors.amber,
+                      //         ),
+                      //         Text(
+                      //           " 5(42)",
+                      //           style: fontW5S12(context)!.copyWith(
+                      //               fontSize: 11,
+                      //               color: AppColors.lightdarktextcolor,
+                      //               fontWeight: FontWeight.w500),
+                      //         ),
+                      //       ],
+                      //     ),
+                      //   ],
+                      // ),
+                      // Container(
+                      //   height: 30,
+                      //   width: 1,
+                      //   color: AppColors.lightdarktextcolor,
+                      // ),
                       Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
+                        crossAxisAlignment: CrossAxisAlignment.center,
                         children: [
                           Text(
-                            "Reviews",
+                            "State/Province",
                             style: fontW5S12(context)!.copyWith(
                                 fontSize: 11,
                                 color: AppColors.blackcolor,
@@ -163,46 +236,17 @@ class PopularDietitiansWidget extends StatelessWidget {
                           ),
                           Row(
                             children: [
-                              const Icon(
-                                Icons.star,
-                                size: 13,
-                                color: Colors.amber,
-                              ),
                               Text(
-                                " 5(42)",
+                                userModel.personalInformationModel!.province
+                                    .toString()
+                                    .toUpperCase(),
+                                //" 5(42)",
                                 style: fontW5S12(context)!.copyWith(
                                     fontSize: 11,
                                     color: AppColors.lightdarktextcolor,
                                     fontWeight: FontWeight.w500),
                               ),
                             ],
-                          ),
-                        ],
-                      ),
-                      Container(
-                        height: 30,
-                        width: 1,
-                        color: AppColors.lightdarktextcolor,
-                      ),
-                      Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Text(
-                            "Response",
-                            style: fontW5S12(context)!.copyWith(
-                                fontSize: 11,
-                                color: AppColors.blackcolor,
-                                fontWeight: FontWeight.w700),
-                          ),
-                          const SizedBox(
-                            height: 6,
-                          ),
-                          Text(
-                            "1 hour",
-                            style: fontW5S12(context)!.copyWith(
-                                fontSize: 11,
-                                color: AppColors.lightdarktextcolor,
-                                fontWeight: FontWeight.w500),
                           ),
                         ],
                       ),

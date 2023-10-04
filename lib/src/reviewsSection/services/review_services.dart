@@ -26,6 +26,42 @@ class ReviewServices {
             .toList());
   }
 
+  /// Stream dieitian reviews
+  Stream<List<ReviewModel>> streamSpecificDoctorReviewsList(String userID) {
+    //  try {
+    return FirebaseFirestore.instance
+        .collection(FirebaseUtils.reviews)
+        .where("reviewRecieverID", isEqualTo: userID)
+        //.where("isApprovedByAdmin", isEqualTo: isApprove)
+        .snapshots()
+        .map((list) => list.docs
+            .map((singleDoc) => ReviewModel.fromJson(singleDoc.data()))
+            .toList());
+  }
+
+  Future<List<ReviewModel>> getReviewsListOfSpecificCareProvider(
+      String userID) async {
+    try {
+      final querySnapshot = await FirebaseFirestore.instance
+          .collection(FirebaseUtils.reviews)
+          .where("reviewRecieverID", isEqualTo: userID)
+          // .where("dietitianID", isEqualTo: userID)
+
+          //.where("isApprovedByAdmin", isEqualTo: isApprove)
+          .get();
+
+      final reviewList = querySnapshot.docs
+          .map((singleDoc) => ReviewModel.fromJson(singleDoc.data()))
+          .toList();
+
+      return reviewList;
+    } catch (e) {
+      // Handle errors here
+      print("Error fetching reviews: $e");
+      return []; // Return an empty list or handle the error as needed
+    }
+  }
+
   /// update timeslots updated
   Future UpdateReviewStatusOfDietitan(
       AppointmentModel appointmentModelNew, String appointmentID) async {
