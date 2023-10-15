@@ -26,7 +26,7 @@ class TextFieldWidget extends StatelessWidget {
       this.onsuffixIconTap})
       : super(key: key);
 
-  final TextEditingController controller;
+  final TextEditingController? controller;
   final double textFieldHeight;
   final int maxlines;
   final double toppadding;

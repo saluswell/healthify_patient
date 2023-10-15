@@ -450,6 +450,7 @@ class AppointmentProvider extends ChangeNotifier {
             isReviewGivenByDietitian: false,
             isReviewGivenByPatient: false,
             combineDateTime: Timestamp.fromDate(combineDateTimes!),
+            careProviderType: userModelDietitian!.userType,
             // from: timeSlotModel!.startTime,
             //to: timeSlotModel!.endTime,
             payementPlansModel: payementPlansModelvar,

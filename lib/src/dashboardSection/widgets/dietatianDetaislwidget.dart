@@ -99,43 +99,43 @@ class PopularDietitiansWidget extends StatelessWidget {
                           ),
                         ],
                       ),
-                      userModel.isVerified == true
-                          ? Column(
-                              children: [
-                                Icon(
-                                  Icons.verified_rounded,
-                                  color: AppColors.appcolor,
-                                ),
-                                SizedBox(
-                                  height: 2,
-                                ),
-                                Text(
-                                  "Verified",
-                                  style: fontW5S12(context)!.copyWith(
-                                      fontSize: 12,
-                                      color: AppColors.lightdarktextcolor,
-                                      fontWeight: FontWeight.w500),
-                                ),
-                              ],
-                            )
-                          : Column(
-                              children: [
-                                Icon(
-                                  Icons.verified_rounded,
-                                  color: AppColors.redcolor,
-                                ),
-                                SizedBox(
-                                  height: 2,
-                                ),
-                                Text(
-                                  "Not Verified",
-                                  style: fontW5S12(context)!.copyWith(
-                                      fontSize: 12,
-                                      color: AppColors.lightdarktextcolor,
-                                      fontWeight: FontWeight.w500),
-                                ),
-                              ],
-                            )
+                      // userModel.isVerified == true
+                      //     ? Column(
+                      //         children: [
+                      //           Icon(
+                      //             Icons.verified_rounded,
+                      //             color: AppColors.appcolor,
+                      //           ),
+                      //           SizedBox(
+                      //             height: 2,
+                      //           ),
+                      //           Text(
+                      //             "Verified",
+                      //             style: fontW5S12(context)!.copyWith(
+                      //                 fontSize: 12,
+                      //                 color: AppColors.lightdarktextcolor,
+                      //                 fontWeight: FontWeight.w500),
+                      //           ),
+                      //         ],
+                      //       )
+                      //     : Column(
+                      //         children: [
+                      //           Icon(
+                      //             Icons.verified_rounded,
+                      //             color: AppColors.redcolor,
+                      //           ),
+                      //           SizedBox(
+                      //             height: 2,
+                      //           ),
+                      //           Text(
+                      //             "Not Verified",
+                      //             style: fontW5S12(context)!.copyWith(
+                      //                 fontSize: 12,
+                      //                 color: AppColors.lightdarktextcolor,
+                      //                 fontWeight: FontWeight.w500),
+                      //           ),
+                      //         ],
+                      //       )
                       // Column(
                       //   children: [
                       //     IconButton(

@@ -27,5 +27,13 @@ class FirebaseUtils {
 
   static String workouts = "workouts";
 
-  static String mealPlans="mealPlans";
+  static String mealPlans = "mealPlans";
+
+  static String careGoalPlans = "careGoalPlans";
+
+  static String comments = "comments";
+
+  static String carePlans = "carePlans";
+
+  static String soapNotes = "soapNotes";
 }

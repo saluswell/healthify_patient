@@ -4,6 +4,7 @@ import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_stripe/flutter_stripe.dart';
+import 'package:healthifi_patient/src/%20careGoalPlanSection/providers/care_goal_provider.dart';
 import 'package:healthifi_patient/src/apppointmentsSection/providers/appointmentProvider.dart';
 import 'package:healthifi_patient/src/apppointmentsSection/providers/timeslot_provider.dart';
 import 'package:healthifi_patient/src/authenticationsection/providers/authProvider.dart';
@@ -19,7 +20,10 @@ import 'package:healthifi_patient/src/dashboardSection/providers/search_provider
 import 'package:healthifi_patient/src/dashboardSection/screens/bottomNavScreen.dart';
 import 'package:healthifi_patient/src/dashboardSection/screens/homeScreen.dart';
 import 'package:healthifi_patient/src/healthSection/providers/healthzoneProvider.dart';
+import 'package:healthifi_patient/src/mealPlansSection/providers/meal_plan_provider.dart';
 import 'package:healthifi_patient/src/medicalRecordSection/providers/medicalRecordProvider.dart';
+import 'package:healthifi_patient/src/notesSection/providers/soap_note_provider.dart';
+import 'package:healthifi_patient/src/nutritionGoalPlanSection/providers/nuttrition_Care_provider.dart';
 import 'package:healthifi_patient/src/onboardingsection/screens/onboardingscreen_one.dart';
 import 'package:healthifi_patient/src/onboardingsection/screens/onboardingscreen_three.dart';
 import 'package:healthifi_patient/src/onboardingsection/screens/onboardingscreen_two.dart';
@@ -158,6 +162,10 @@ class _MyAppState extends State<MyApp> {
           ChangeNotifierProvider(create: (context) => RecipesProvider()),
           ChangeNotifierProvider(create: (context) => WorkoutProvider()),
           ChangeNotifierProvider(create: (context) => SearchProvider()),
+          ChangeNotifierProvider(create: (context) => DiagnosticProvider()),
+          ChangeNotifierProvider(create: (context) => CareGoalProvider()),
+          ChangeNotifierProvider(create: (context) => SoapNoteProvider()),
+          ChangeNotifierProvider(create: (context) => MealPlanProvider()),
         ],
         child: MaterialApp(
             debugShowCheckedModeBanner: false,

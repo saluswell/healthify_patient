@@ -18,7 +18,6 @@ import '../../notificationSection/screens/notificationListScreen.dart';
 import '../../recipesSection/screens/reccipes_list_screen.dart';
 import '../../subscriptionSection/screens/subscription_screen.dart';
 import '../../subscriptionSection/services/subscription_services.dart';
-import '../../workOutSection/screens/workouts_list.dart';
 import '../help_center.dart';
 import '../privacy_policy.dart';
 import '../terms_and_conditions.dart';
@@ -378,26 +377,26 @@ class _MyAccountScreenState extends State<MyAccountScreen> {
                         height: 6,
                       ),
 
-                      MyAccountCardWidgets(
-                        height: 22,
-                        width: 22,
-                        text: "Workouts",
-                        prefixicon: Res.helpercenter,
-                        suffixicon: Res.arrowforward,
-                        ontap: () {
-                          toNext(
-                              context: context, widget: WorkoutsListScreen());
-                        },
-                      ),
-                      const SizedBox(
-                        height: 6,
-                      ),
-                      Divider(
-                        color: AppColors.lightdarktextcolor.withOpacity(0.7),
-                      ),
-                      const SizedBox(
-                        height: 6,
-                      ),
+                      // MyAccountCardWidgets(
+                      //   height: 22,
+                      //   width: 22,
+                      //   text: "Workouts",
+                      //   prefixicon: Res.helpercenter,
+                      //   suffixicon: Res.arrowforward,
+                      //   ontap: () {
+                      //     toNext(
+                      //         context: context, widget: WorkoutsListScreen());
+                      //   },
+                      // ),
+                      // const SizedBox(
+                      //   height: 6,
+                      // ),
+                      // Divider(
+                      //   color: AppColors.lightdarktextcolor.withOpacity(0.7),
+                      // ),
+                      // const SizedBox(
+                      //   height: 6,
+                      // ),
                       MyAccountCardWidgets(
                         height: 22,
                         width: 22,
@@ -595,8 +594,8 @@ class _MyAccountScreenState extends State<MyAccountScreen> {
 
 Future<void> share() async {
   await FlutterShare.share(
-      title: 'Cyglera App',
-      text: 'Dietitian App',
-      linkUrl: "wwww.cyglera.com",
-      chooserTitle: 'CrowdVoice App');
+      title: 'Healthifi Consumer App',
+      text: 'Healthifi Consumer App',
+      linkUrl: "wwww.healthifi.com",
+      chooserTitle: 'Healthifi Consumer App');
 }

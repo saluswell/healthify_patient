@@ -95,46 +95,46 @@ class SearchDietitiansWidget extends StatelessWidget {
                               ),
                             ],
                           ),
-                          Padding(
-                            padding: const EdgeInsets.only(right: 10),
-                            child: userModel.isVerified == true
-                                ? Column(
-                                    children: [
-                                      Icon(
-                                        Icons.verified_rounded,
-                                        color: AppColors.appcolor,
-                                      ),
-                                      SizedBox(
-                                        height: 2,
-                                      ),
-                                      Text(
-                                        "Verified",
-                                        style: fontW5S12(context)!.copyWith(
-                                            fontSize: 12,
-                                            color: AppColors.lightdarktextcolor,
-                                            fontWeight: FontWeight.w500),
-                                      ),
-                                    ],
-                                  )
-                                : Column(
-                                    children: [
-                                      Icon(
-                                        Icons.verified_rounded,
-                                        color: AppColors.redcolor,
-                                      ),
-                                      SizedBox(
-                                        height: 2,
-                                      ),
-                                      Text(
-                                        "Not Verified",
-                                        style: fontW5S12(context)!.copyWith(
-                                            fontSize: 12,
-                                            color: AppColors.lightdarktextcolor,
-                                            fontWeight: FontWeight.w500),
-                                      ),
-                                    ],
-                                  ),
-                          )
+                          // Padding(
+                          //   padding: const EdgeInsets.only(right: 10),
+                          //   child: userModel.isVerified == true
+                          //       ? Column(
+                          //           children: [
+                          //             Icon(
+                          //               Icons.verified_rounded,
+                          //               color: AppColors.appcolor,
+                          //             ),
+                          //             SizedBox(
+                          //               height: 2,
+                          //             ),
+                          //             Text(
+                          //               "Verified",
+                          //               style: fontW5S12(context)!.copyWith(
+                          //                   fontSize: 12,
+                          //                   color: AppColors.lightdarktextcolor,
+                          //                   fontWeight: FontWeight.w500),
+                          //             ),
+                          //           ],
+                          //         )
+                          //       : Column(
+                          //           children: [
+                          //             Icon(
+                          //               Icons.verified_rounded,
+                          //               color: AppColors.redcolor,
+                          //             ),
+                          //             SizedBox(
+                          //               height: 2,
+                          //             ),
+                          //             Text(
+                          //               "Not Verified",
+                          //               style: fontW5S12(context)!.copyWith(
+                          //                   fontSize: 12,
+                          //                   color: AppColors.lightdarktextcolor,
+                          //                   fontWeight: FontWeight.w500),
+                          //             ),
+                          //           ],
+                          //         ),
+                          // )
                           // Column(
                           //   children: [
                           //     IconButton(

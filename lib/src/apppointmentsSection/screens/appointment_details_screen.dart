@@ -4,16 +4,22 @@ import 'package:date_time_format/date_time_format.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 
+import '../../ careGoalPlanSection/screens/care_goal_plans_listing.dart';
 import '../../../common/helperFunctions/getUserIDhelper.dart';
 import '../../../common/helperFunctions/navigatorHelper.dart';
 import '../../../common/utils/appcolors.dart';
 import '../../../common/utils/firebaseUtils.dart';
 import '../../../common/utils/themes.dart';
+import '../../../common/widgets/button_widget.dart';
 import '../../../res.dart';
 import '../../VideoCallingSection/screens/zego_simple_join_video_call.dart';
 import '../../chatSection/screens/messages.dart';
+import '../../mealPlansSection/screens/meal_plan_listing_screen.dart';
 import '../../medicalRecordSection/screens/medical_record_list_screen.dart';
+import '../../notesSection/soapNotes/screens/soapNotesList.dart';
+import '../../nutritionGoalPlanSection/screens/nutrition_care_plan_list.dart';
 import '../../reviewsSection/screens/givereviewScreen.dart';
+import '../../workOutSection/screens/workouts_list.dart';
 import '../models/appointmentModel.dart';
 import '../providers/appointmentProvider.dart';
 
@@ -467,6 +473,145 @@ class _AppointmentDetailsScreenState extends State<AppointmentDetailsScreen> {
           //     ),
           //   ),
           // ),
+
+          if (widget.appointmentModel.careProviderType == "Dietitian") ...[
+            Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 12),
+              child: Column(
+                children: [
+                  Row(
+                    children: [
+                      Expanded(
+                        child: CommonButtonWidget(
+                            text: "Nutrition Care Plan",
+                            bordercolor: AppColors.darkAppColor,
+                            textfont: 12,
+                            buttonHeight: 45,
+                            horizontalPadding: 0,
+                            backgroundcolor: AppColors.darkAppColor,
+                            onTap: () {
+                              toNext(
+                                  context: context,
+                                  widget: NutritionCarePlan(
+                                    appointmentID: widget
+                                        .appointmentModel.appointmentId
+                                        .toString(),
+                                    patientID: widget.appointmentModel.patientId
+                                        .toString(),
+                                    dietitianID: widget
+                                        .appointmentModel.dietitianId
+                                        .toString(),
+                                  ));
+                            }),
+                      ),
+                      SizedBox(
+                        width: 10,
+                      ),
+                      Expanded(
+                        child: CommonButtonWidget(
+                            text: "Care Goal Plan",
+                            bordercolor: AppColors.darkAppColor,
+                            textfont: 12,
+                            buttonHeight: 45,
+                            horizontalPadding: 0,
+                            backgroundcolor: AppColors.darkAppColor,
+                            onTap: () {
+                              toNext(
+                                  context: context,
+                                  widget: CareGoalPlansListScreen(
+                                    appointmentID: widget
+                                        .appointmentModel.appointmentId
+                                        .toString(),
+                                  ));
+                              // toNext(
+                              //     context: context,
+                              //     widget: NutritionCarePlan(
+                              //       appointmentID: widget
+                              //           .appointmentModelNew.appointmentId
+                              //           .toString(),
+                              //       patientID: widget.appointmentModelNew.patientId
+                              //           .toString(),
+                              //       dietitianID: widget
+                              //           .appointmentModelNew.dietitianId
+                              //           .toString(),
+                              //     ));
+                            }),
+                      ),
+                    ],
+                  ),
+                  SizedBox(
+                    height: 15,
+                  ),
+                  Row(
+                    children: [
+                      Expanded(
+                        child: CommonButtonWidget(
+                            text: "Meal Plans",
+                            bordercolor: AppColors.darkAppColor,
+                            textfont: 12,
+                            buttonHeight: 45,
+                            horizontalPadding: 0,
+                            backgroundcolor: AppColors.darkAppColor,
+                            onTap: () {
+                              toNext(
+                                  context: context,
+                                  widget: MealPlansListingScreen(
+                                    appointmentID: widget
+                                        .appointmentModel.appointmentId
+                                        .toString(),
+                                  ));
+                            }),
+                      ),
+                    ],
+                  ),
+                ],
+              ),
+            ),
+          ] else if (widget.appointmentModel.careProviderType ==
+              "Fitness Trainer") ...[
+            CommonButtonWidget(
+                text: "Workouts",
+                bordercolor: AppColors.darkAppColor,
+                textfont: 13,
+                buttonHeight: 45,
+                horizontalPadding: 15,
+                backgroundcolor: AppColors.darkAppColor,
+                onTap: () {
+                  toNext(
+                      context: context,
+                      widget: WorkoutsListScreen(
+                          // appointmentID:
+                          //     widget.appointmentModel.appointmentId.toString(),
+                          // patientID: widget.appointmentModel.patientId.toString(),
+                          // dietitianID:
+                          //     widget.appointmentModel.dietitianId.toString(),
+                          ));
+                }),
+            SizedBox(
+              height: 20,
+            ),
+          ] else if (widget.appointmentModel.careProviderType == "Physician" ||
+              widget.appointmentModel.careProviderType ==
+                  "Behavior Coache") ...[
+            CommonButtonWidget(
+                text: "SOAP Notes",
+                bordercolor: AppColors.darkAppColor,
+                textfont: 13,
+                buttonHeight: 45,
+                horizontalPadding: 15,
+                backgroundcolor: AppColors.darkAppColor,
+                onTap: () {
+                  toNext(
+                      context: context,
+                      widget: SoapNotesList(
+                        appointmentID:
+                            widget.appointmentModel.appointmentId.toString(),
+                        patientID: widget.appointmentModel.patientId.toString(),
+                        dietitianID:
+                            widget.appointmentModel.dietitianId.toString(),
+                      ));
+                }),
+          ],
           DateTime.now()
                   .isBefore(widget.appointmentModel.combineDateTime!.toDate())
               ? Text(

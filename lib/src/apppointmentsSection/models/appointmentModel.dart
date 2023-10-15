@@ -37,7 +37,8 @@ class AppointmentModel {
       this.payementPlansModel,
       this.patientQuestionareModel,
       this.timeslot,
-      this.combineDateTime});
+      this.combineDateTime,
+      this.careProviderType});
 
   String? appointmentId;
   Timestamp? appointmentDateTime;
@@ -60,6 +61,7 @@ class AppointmentModel {
   PatientQuestionareModel? patientQuestionareModel;
   String? timeslot;
   Timestamp? combineDateTime;
+  String? careProviderType;
 
   factory AppointmentModel.fromJson(Map<String, dynamic> json) =>
       AppointmentModel(
@@ -86,6 +88,7 @@ class AppointmentModel {
             PatientQuestionareModel.fromJson(json["payementPlansModel"]),
         timeslot: json["timeslot"],
         combineDateTime: json["combineDateTime"],
+        careProviderType: json["careProviderType"],
 
         //  timeSlotModel: json["timeSlotModel"],
       );
@@ -112,5 +115,6 @@ class AppointmentModel {
         "patientQuestionareModel": patientQuestionareModel!.toJson(id),
         "timeslot": timeslot,
         "combineDateTime": combineDateTime,
+        "careProviderType": careProviderType,
       };
 }
