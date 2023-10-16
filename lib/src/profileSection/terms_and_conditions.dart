@@ -1,12 +1,8 @@
-
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/flutter_svg.dart';
 import 'package:percent_indicator/circular_percent_indicator.dart';
 import 'package:webview_flutter/webview_flutter.dart';
 
-import '../../../res.dart';
 import '../../common/utils/appcolors.dart';
-import '../../common/utils/themes.dart';
 
 class TermsAndConditions extends StatefulWidget {
   const TermsAndConditions({Key? key}) : super(key: key);
@@ -26,7 +22,7 @@ class _TermsAndConditionsState extends State<TermsAndConditions> {
           backgroundColor: AppColors.whitecolor,
           title: const Text("Terms & Conditions",
               style: TextStyle(
-                // fontFamily: 'Gilroy',
+                  // fontFamily: 'Gilroy',
                   color: AppColors.blackcolor,
                   // decoration: TextDecoration.underline,
                   fontWeight: FontWeight.w700,
@@ -65,14 +61,14 @@ class _TermsAndConditionsState extends State<TermsAndConditions> {
               },
               zoomEnabled: true,
               initialUrl:
-              'https://docs.google.com/document/d/1j-4NyPP1KosvMqag8-CJbrHRtZoI9UF6GRoo0aJK5Zk/edit',
+                  'https://docs.google.com/document/d/1UTir9Yz0cBx6XP0d3EscYu4dRGFS_o1rTeXPE23VIC0/edit?usp=sharing',
             ),
             if (loadingPercentage < 100)
-            // LinearProgressIndicator(
-            //   minHeight: 5,
-            //   color: AppColors.greencolor,
-            //   value: loadingPercentage / 100.0,
-            // ),
+              // LinearProgressIndicator(
+              //   minHeight: 5,
+              //   color: AppColors.greencolor,
+              //   value: loadingPercentage / 100.0,
+              // ),
               Center(
                 child: CircularPercentIndicator(
                   radius: 30.0,

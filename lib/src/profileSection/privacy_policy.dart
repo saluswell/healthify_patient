@@ -1,11 +1,8 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_svg/flutter_svg.dart';
 import 'package:percent_indicator/circular_percent_indicator.dart';
 import 'package:webview_flutter/webview_flutter.dart';
 
-import '../../../res.dart';
 import '../../common/utils/appcolors.dart';
-import '../../common/utils/themes.dart';
 
 class PrivacyPolicy extends StatefulWidget {
   const PrivacyPolicy({Key? key}) : super(key: key);
@@ -64,7 +61,7 @@ class _PrivacyPolicyState extends State<PrivacyPolicy> {
             },
             zoomEnabled: true,
             initialUrl:
-                'https://docs.google.com/document/d/1j-4NyPP1KosvMqag8-CJbrHRtZoI9UF6GRoo0aJK5Zk/edit',
+                'https://docs.google.com/document/d/1_oqAUe31qvz5rUuvsLtHhUnBN0Cjktod9eez9f0ylxg/edit?usp=sharing',
           ),
           if (loadingPercentage < 100)
             // LinearProgressIndicator(
