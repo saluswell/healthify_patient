@@ -13,6 +13,7 @@ class TermsAndConditions extends StatefulWidget {
 
 class _TermsAndConditionsState extends State<TermsAndConditions> {
   var loadingPercentage = 0;
+
   @override
   Widget build(BuildContext context) {
     return SafeArea(
